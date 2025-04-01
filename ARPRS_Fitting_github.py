@@ -38,7 +38,10 @@ for filename in os.listdir(director_path):
         datas = pd.read_csv(filename, names=['theta', 'value'], header=None, sep='\t')
         theta = datas.loc[:, 'theta']
         line_number=len(theta)
-        interval = 10 # This value represent the interval of test angle
+
+                      #####################################################################  
+        interval = 10 # This value represent the interval of test angle (can be modified) #
+                      #####################################################################  
         line = []
         K = True
         while K:
@@ -97,10 +100,18 @@ for num_director in range(len(director_list)):
 
 
             picture_name = txt[:-4]
-            D_of_FE=1e-30 # use it when the scatters are axisymmetric
+
+            #################################################################################################
+            # The values in next lines (A_range_of_FE, B_range_of_FE, C_range_of_FE, D_range_of_FE) can be modified to speed up fitting process
+            #################################################################################################
+            
+            A_range_of_FE=180
+            B_range_of_FE = 180
+            C_range_of_FE = 30000
+            D_range_of_FE=1e-30 # use it when the scatters are axisymmetric
             #D_of_FE=np.inf # use it when the scatters are nonaxisymmetric
-            bounds = ([0, 0, -np.inf, 0, -D_of_FE],
-                      [180, 180, np.inf, 180,D_of_FE])
+            bounds = ([0, 0, -np.inf, -C_range_of_FE, -D_range_of_FE],
+                      [A_range_of_FE, B_range_of_FE, C_range_of_FE, 180,D_range_of_FE])
 
             i += 1
             if i == 10:
