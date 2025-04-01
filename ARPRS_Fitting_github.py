@@ -98,8 +98,11 @@ for num_director in range(len(director_list)):
 
             picture_name = txt[:-4]
 
-            bounds = ([0, 0, -np.inf, 0,-np.inf],
-                      [np.inf, np.inf, np.inf, 180,np.inf])
+            picture_name = txt[:-4]
+            D_of_FE=1e-30 # use it when the scatters are axisymmetric
+            #D_of_FE=np.inf # use it when the scatters are nonaxisymmetric
+            bounds = ([0, 0, -np.inf, 0, -D_of_FE],
+                      [180, 180, np.inf, 180,D_of_FE]) # The "bounds" can be adjusted based on the practical situation to accelerate the fitting process
 
             i += 1
             if i == 10:
