@@ -109,7 +109,7 @@ for num_director in range(len(director_list)):
             B_range_of_FE = 180
             C_range_of_FE = 30000
             D_range_of_FE=1e-30 # use it when the scatters are axisymmetric
-            #D_of_FE=np.inf # use it when the scatters are nonaxisymmetric
+            #D_range_of_FE=np.inf # use it when the scatters are nonaxisymmetric
             bounds = ([0, 0, -np.inf, -C_range_of_FE, -D_range_of_FE],
                       [A_range_of_FE, B_range_of_FE, C_range_of_FE, 180,D_range_of_FE])
 
