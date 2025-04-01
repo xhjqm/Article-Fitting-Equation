@@ -97,31 +97,30 @@ for num_director in range(len(director_list)):
 
 
             picture_name = txt[:-4]
-
-            picture_name = txt[:-4]
             D_of_FE=1e-30 # use it when the scatters are axisymmetric
             #D_of_FE=np.inf # use it when the scatters are nonaxisymmetric
             bounds = ([0, 0, -np.inf, 0, -D_of_FE],
-                      [180, 180, np.inf, 180,D_of_FE]) # The "bounds" can be adjusted based on the practical situation to accelerate the fitting process
+                      [180, 180, np.inf, 180,D_of_FE])
 
             i += 1
             if i == 10:
                 i = -1
 
-            methods=['trf','dogbox']
+            methods=['dogbox','trf']
             for method in methods:
 
                 print('Fitting method:',method)
                 try:
                     # The Fitting equation----------------------------------------------
                     def target_func(t, A, B, C, D, E):
+
                         return (A) ** 2 * np.sin(t + D * np.pi / 180) ** 4 + B ** 2 * np.cos(
                             t + D * np.pi / 180) ** 4 + C  * np.sin(t + D * np.pi / 180) ** 2 * np.cos(
                             t + D * np.pi / 180) ** 2+ E*np.sin(t + D * np.pi / 180)*np.cos(t + D * np.pi / 180)
                     # ------------------------------------------------------------------
 
                     t = theta1
-                    popt, povc = curve_fit(target_func, t, value1,bounds=bounds,method=method,maxfev=5000)
+                    popt, povc = curve_fit(target_func, t, value1,bounds=bounds,method=method,maxfev=500)
                     y = [target_func(xx, popt[0], popt[1], popt[2], popt[3], popt[4]) for xx in t]
                     residuals = value1 - y
 
@@ -148,9 +147,7 @@ for num_director in range(len(director_list)):
                             'size': 10}
                     plt.rc('font', **font)
                     plt.figure(figsize=(10, 6))
-                    cx = plt.subplot(121)
-                    cx.plot(datas.loc[:, 'theta'], value1, 'o-', linewidth=1, color=color[i], label=txt[:-4])
-                    bx = plt.subplot(122, projection='polar')
+                    bx = plt.subplot(111, projection='polar')
                     plot_scatter2 = bx.scatter(theta1, value1, linewidth=1, color=color[i], label=txt[:-4])
                     bx.plot(theta1_new, y_smooth, color='r', linewidth=1, label='fit')
                     plt.title(f'{director_list[num_director]}-{picture_name}', fontweight='bold')
