@@ -1,6 +1,6 @@
 This file contains instructions for the Fitting Program.
 
-The fitting eequation in this program is: 
+The fitting equation in this program is: 
             
             A^2 * sin^4(/theta+/phi) + B^2 * cos^4(/theta+/phi) + C * sin^2(/theta+/phi)*cos^2(/theta+/phi) +D * sin(/theta+/phi)*cos(/theta+/phi)
 
@@ -14,10 +14,13 @@ A plot showing the test data points and the fitting curve,
 3. A text file with 300 points derived from the 
 4. fitting equation. This last file can be used to plot the fitting curve in other software, such as Origin.
 
-Notice, the parameters you can modified is:
+The parameters that users can modify to accelerate data processing are:
 
-A_range_of_FE= np.inf
-B_range_of_FE = np.inf
-C_range_of_FE = 25000
-D_range_of_FE=1e-30 # use it when the scatters are axisymmetric
-            
+Range of parameters in the fitting equation:
+A_range_of_FE (line 108)
+B_range_of_FE (line 109)
+C_range_of_FE (line 110)
+D_range_of_FE (line 111)
+
+Maximum number of function evaluations:
+maxfev        (line 134)   
