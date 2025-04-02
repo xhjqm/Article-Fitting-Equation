@@ -110,8 +110,8 @@ for num_director in range(len(director_list)):
             C_range_of_FE = 25000
             D_range_of_FE=1e-30 # use it when the scatters are axisymmetric
             #D_range_of_FE=np.inf # use it when the scatters are nonaxisymmetric
-            bounds = ([0, 0, -C_range_of_FE , 0, -D_range_of_FE],
-                      [A_range_of_FE, B_range_of_FE, C_range_of_FE, 180,D_range_of_FE])
+            bounds = ([0, 0, -C_range_of_FE ,  -D_range_of_FE,0],
+                      [A_range_of_FE, B_range_of_FE, C_range_of_FE,D_range_of_FE,180])
 
             i += 1
             if i == 10:
@@ -123,11 +123,11 @@ for num_director in range(len(director_list)):
                 print('Fitting method:',method)
                 try:
                     # The Fitting equation----------------------------------------------
-                    def target_func(t, A, B, C, D, E):
+                    def target_func(t, A, B, C, D, phi):
 
-                        return (A) ** 2 * np.sin(t + D * np.pi / 180) ** 4 + B ** 2 * np.cos(
-                            t + D * np.pi / 180) ** 4 + C  * np.sin(t + D * np.pi / 180) ** 2 * np.cos(
-                            t + D * np.pi / 180) ** 2+ E*np.sin(t + D * np.pi / 180)*np.cos(t + D * np.pi / 180)
+                        return (A) ** 2 * np.sin(t + phi * np.pi / 180) ** 4 + B ** 2 * np.cos(
+                            t + phi * np.pi / 180) ** 4 + C  * np.sin(t + phi * np.pi / 180) ** 2 * np.cos(
+                            t + phi * np.pi / 180) ** 2+ D*np.sin(t + phi * np.pi / 180)*np.cos(t + phi * np.pi / 180)
                     # ------------------------------------------------------------------
 
                     t = theta1
@@ -184,8 +184,8 @@ for num_director in range(len(director_list)):
                     # ------------------------------------------------------------------
 
                     # Record fitting parameters in to a file--------------------------------------
-                    D = popt[4] if popt[0] > popt[1] else -popt[4]
-                    rotate = popt[3] if popt[0] > popt[1] else popt[3] - 90
+                    D = popt[3] if popt[0] > popt[1] else -popt[3]
+                    rotate = popt[4] if popt[0] > popt[1] else popt[4] - 90
                     rotate = rotate if rotate >= 0 else 180 + rotate
                     A = popt[0] if popt[0] > popt[1] else popt[1]
                     B = popt[1] if popt[1] < popt[0] else popt[0]
