@@ -105,12 +105,12 @@ for num_director in range(len(director_list)):
             # The values in next lines (A_range_of_FE, B_range_of_FE, C_range_of_FE, D_range_of_FE) can be modified to speed up fitting process
             #################################################################################################
             
-            A_range_of_FE=180
-            B_range_of_FE = 180
-            C_range_of_FE = 30000
+            A_range_of_FE= np.inf
+            B_range_of_FE = np.inf
+            C_range_of_FE = 25000
             D_range_of_FE=1e-30 # use it when the scatters are axisymmetric
             #D_range_of_FE=np.inf # use it when the scatters are nonaxisymmetric
-            bounds = ([0, 0, -np.inf, -C_range_of_FE, -D_range_of_FE],
+            bounds = ([0, 0, -C_range_of_FE , 0, -D_range_of_FE],
                       [A_range_of_FE, B_range_of_FE, C_range_of_FE, 180,D_range_of_FE])
 
             i += 1
