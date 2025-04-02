@@ -17,10 +17,12 @@ A plot showing the test data points and the fitting curve,
 The parameters that users can modify to accelerate data processing are:
 
 Range of parameters in the fitting equation:
-A_range_of_FE (line 108)
-B_range_of_FE (line 109)
-C_range_of_FE (line 110)
-D_range_of_FE (line 111)
+
+A_range_of_FE (line 108),
+B_range_of_FE (line 109),
+C_range_of_FE (line 110),
+D_range_of_FE (line 111).
 
 Maximum number of function evaluations:
-maxfev        (line 134)   
+
+maxfev        (line 134).   
