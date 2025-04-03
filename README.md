@@ -1,3 +1,5 @@
+# Introduction
+
 This file contains instructions for the Fitting Program.
 
 The fitting equation in this program is: 
@@ -29,9 +31,8 @@ maxfev        (line 134).
 Besides, normalizing test data is a good way to speed up the data processing.
 
 
-##############################################################
-#                           Usage                            #
-##############################################################
+
+# Usage                            
 
 Please reade the 'Usage.jpg'. The file 'MoO3 Data for Review by SAA' is test data of our manuscript for peer review.
 
