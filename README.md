@@ -1,3 +1,4 @@
+If you use this method, please cite our article “A unified model of the intensity equations in Angle-Resolved Polarized Raman Spectroscopy”, DOI: https://doi.org/10.1016/j.saa.2025.126365.
 # Introduction
 
 This file contains instructions for the Fitting Program.
@@ -36,16 +37,22 @@ Besides, normalizing test data is a good way to speed up the data processing.
 
 Please reade the 'Usage.jpg'. The file 'MoO3 Data for Review by SAA' is test data of our manuscript for peer review.
 
-To run the code, please follow these steps:
-1. Press the 'Code' button on the GitHub page and click 'Download ZIP' (Fig. a). Extract the ZIP file; you will find five files (Fig. b).
-2. The file ‘ARPRS_Fitting_github.py’ is the fitting program. Before running the program, ensure that your computer has the necessary Python packages: pandas, numpy, scipy, and matplotlib.
+To run the code accurately, please follow these steps as follows:
+1. Press the “Code” button on the GitHub page.
+2. Click "Download ZIP" (Fig. a). Extract the ZIP file; you will find six files (Fig. b).
+   The file "MoO3 Data for Review by SAA" contains the ARPRS test data from Fig. 8 of the
+   manuscript. The file “ARPRS−Fitting−github.py” is the fitting program.
+3. Open the directory “MoO3 Data for Review by SAA”, chose the text file (click the ’name’ box),
+   and right-click the mouse to choose all the files in the blue area (Fig. c).
+4. Select the “Properties” option.
+5. Copy the location (Fig. d).
+6. Go back to the file named Article-Fitting-Equation-master, then run the “ARPRS−Fitting−.py”
+   file, paste the location after the symbol of ">>>", finally press Enter (Fig. e) to execute the
+   program. The fitted results can be found in the directory "MoO3 Data for Review by SAA".
 
-To use the program:
-1. Open the directory ‘MoO3 Data for Review by SAA’, click the 'name' box, and right-click the blue area (Fig. c).
-2. Select the ‘Properties’ option and copy the location (Fig. d).
-3. Run the ‘ARPRS_Fitting_github.py’ file, paste the location after the '>>>' symbol, and press Enter (Fig. e) to execute the program.
-
-If you wish to fit the ‘Demo_ARPRS_Data’ (Fig. b), you need to modify the value ‘D_range_of_FE = 1E-30’ to ‘D_range_of_FE = np.inf’ on line 111 of the Python program. This change sets the parameter D to the range (-∞, ∞).
+If you wish to fit the "Demo−ARPRS−Data" (Fig. b), you need to modify the value "D−range−of−FE
+= 1E-30" to "D−range−of−FE = np.inf" on line 111 of the Python program. This change sets the
+parameter D to the range (−∞, ∞).
 
 
 
